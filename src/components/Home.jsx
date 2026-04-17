@@ -601,9 +601,7 @@ export default function HeroSection() {
                 <li className="cursor-pointer hover:text-white transition">
                   About Us
                 </li>
-                <li className="cursor-pointer hover:text-white transition">
-                  Career
-                </li>
+
                 <li className="cursor-pointer hover:text-white transition">
                   Rider
                 </li>
