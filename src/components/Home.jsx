@@ -17,6 +17,7 @@ import Slide1 from "../assets/Slider.png";
 import Slide2 from "../assets/Slider1.png";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const tickerItems = [
   { text: "BOOK ONLINE NOW", dark: false },
@@ -69,12 +70,26 @@ const StarIcon = ({ color }) => (
 );
 
 export default function HeroSection() {
-  const [form, setForm] = useState({ name: "", phone: "", email: "" });
-
-  const handleSubmit = (e) => {
+  const [form, setForm] = useState({ name: "", phone: "", email: "" , message: ""});
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Form submitted!");
-    setForm({ name: "", phone: "", email: "" });
+
+    try {
+      const res = await axios.post("http://localhost:5000/send-mail", form);
+
+      if (res.data.success) {
+        alert("Email Sent ✅");
+        setForm({
+          name: "",
+          phone: "",
+          email: "",
+          message: "",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed ❌");
+    }
   };
 
   const slides = [Slide1, Slide2];
@@ -145,61 +160,59 @@ export default function HeroSection() {
         className="relative w-full bg-white overflow-hidden py-16 sm:py-20 lg:py-24 flex justify-center items-center px-4"
       >
         {/* Ticker strips */}
-<div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-
-  {/* Yellow strip */}
-  <div
-    className="absolute w-[260%] sm:w-[220%] md:w-[200%] 
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+          {/* Yellow strip */}
+          <div
+            className="absolute w-[260%] sm:w-[220%] md:w-[200%] 
                h-[40px] sm:h-[50px] md:h-[60px] 
                bg-[#FDD20B] flex items-center overflow-hidden"
-    style={{
-      transform: "rotate(6deg)",
-      top: "45%",
-      left: "-80%",
-    }}
-  >
-    <div className="flex whitespace-nowrap animate-ticker">
-      {[...tickerItems, ...tickerItems].map((item, i) => (
-        <span
-          key={i}
-          className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 md:px-6 
+            style={{
+              transform: "rotate(6deg)",
+              top: "45%",
+              left: "-80%",
+            }}
+          >
+            <div className="flex whitespace-nowrap animate-ticker">
+              {[...tickerItems, ...tickerItems].map((item, i) => (
+                <span
+                  key={i}
+                  className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 md:px-6 
                      text-[9px] sm:text-[11px] md:text-[12px] 
                      font-black tracking-widest text-black"
-        >
-          <StarIcon color="#000" />
-          {item.text}
-        </span>
-      ))}
-    </div>
-  </div>
+                >
+                  <StarIcon color="#000" />
+                  {item.text}
+                </span>
+              ))}
+            </div>
+          </div>
 
-  {/* Black strip */}
-  <div
-    className="absolute w-[260%] sm:w-[220%] md:w-[200%] 
+          {/* Black strip */}
+          <div
+            className="absolute w-[260%] sm:w-[220%] md:w-[200%] 
                h-[40px] sm:h-[50px] md:h-[60px] 
                bg-black flex items-center overflow-hidden"
-    style={{
-      transform: "rotate(-8deg)",
-      top: "55%",
-      left: "-80%",
-    }}
-  >
-    <div className="flex whitespace-nowrap animate-ticker-reverse">
-      {[...tickerItems, ...tickerItems].map((item, i) => (
-        <span
-          key={i}
-          className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 md:px-6 
+            style={{
+              transform: "rotate(-8deg)",
+              top: "55%",
+              left: "-80%",
+            }}
+          >
+            <div className="flex whitespace-nowrap animate-ticker-reverse">
+              {[...tickerItems, ...tickerItems].map((item, i) => (
+                <span
+                  key={i}
+                  className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 md:px-6 
                      text-[9px] sm:text-[11px] md:text-[12px] 
                      font-black tracking-widest text-[#FDD20B]"
-        >
-          <StarIcon color="#FDD20B" />
-          {item.text}
-        </span>
-      ))}
-    </div>
-  </div>
-
-</div>
+                >
+                  <StarIcon color="#FDD20B" />
+                  {item.text}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Booking card */}
         <div
@@ -243,6 +256,16 @@ export default function HeroSection() {
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="w-full h-10 sm:h-11 px-4 rounded-full bg-white border border-gray-200 outline-none text-sm"
             />
+
+            {/* Message Field */}
+            <textarea
+              placeholder="Enter Your Message"
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              rows="3"
+              className="w-full px-4 py-2 rounded-2xl bg-white border border-gray-200 outline-none text-sm resize-none"
+            ></textarea>
+
             <button
               type="submit"
               className="mt-1 mx-auto px-6 py-2 rounded-full bg-black text-[#FDD20B] font-bold text-sm hover:bg-gray-900 transition"
