@@ -602,7 +602,7 @@ export default function HeroSection() {
               fontSize: "clamp(48px, 13vw, 300px)",
               WebkitTextStroke: "1px rgba(255,255,255,0.12)",
               letterSpacing: "clamp(-1px, -0.2vw, -4px)",
-              lineHeight: "100%",
+              lineHeight: "110%",
             }}
           >
             Only Meter
@@ -674,34 +674,34 @@ export default function HeroSection() {
               </h5>
               <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
                 <li className="cursor-pointer hover:text-white transition">
-                  Ahmedabad, India
+                  Pune Maharashtra
                 </li>
                 <li className="cursor-pointer hover:text-white transition">
-                  +91 12345 67890
+                  +91 94032 41963
                 </li>
                 <li className="cursor-pointer hover:text-white transition">
-                  onlymeterindia@gmail.com
+                  info@onlymeterindia.com
                 </li>
                 {/* Social links as a flex row */}
 
                 <li className="flex gap-4 mt-6">
-  <span className="cursor-pointer hover:text-white transition text-gray-400 hover:text-white">
-    <FaFacebookF size={18} />
-  </span>
-  <span className="cursor-pointer hover:text-white transition text-gray-400 hover:text-white">
-    <FaInstagram size={18} />
-  </span>
-  <span className="cursor-pointer hover:text-white transition text-gray-400 hover:text-white">
-    <FaYoutube size={18} />
-  </span>
-</li>
+                  <span className="cursor-pointer hover:text-white transition text-gray-400 hover:text-white">
+                    <FaFacebookF size={18} />
+                  </span>
+                  <span className="cursor-pointer hover:text-white transition text-gray-400 hover:text-white">
+                    <FaInstagram size={18} />
+                  </span>
+                  <span className="cursor-pointer hover:text-white transition text-gray-400 hover:text-white">
+                    <FaYoutube size={18} />
+                  </span>
+                </li>
               </ul>
             </div>
           </div>
 
           {/* Bottom row – only copyright */}
-          <div className="mt-10 sm:mt-14 flex justify-center sm:justify-start text-xs sm:text-sm text-gray-500">
-            <p>© 2026 Only Meter. All rights reserved.</p>
+          <div className="mt-10 sm:mt-8 flex justify-center sm:justify-start text-xs sm:text-sm text-gray-500">
+            <p>© {new Date().getFullYear()} Only Meter. All rights reserved.</p>
           </div>
         </div>
       </footer>
