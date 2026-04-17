@@ -70,25 +70,30 @@ const StarIcon = ({ color }) => (
 );
 
 export default function HeroSection() {
-  const [form, setForm] = useState({ name: "", phone: "", email: "" , message: ""});
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/send-mail", form);
+      const res = await fetch("http://localhost:5000/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
-      if (res.data.success) {
-        alert("Email Sent ✅");
-        setForm({
-          name: "",
-          phone: "",
-          email: "",
-          message: "",
-        });
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Failed ❌");
+      const data = await res.json();
+      alert("Message sent successfully!");
+
+      setForm({ name: "", phone: "", email: "", message: "" });
+    } catch (error) {
+      alert("Error sending message");
     }
   };
 
@@ -615,7 +620,7 @@ export default function HeroSection() {
               </h5>
               <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
                 <li className="cursor-pointer hover:text-white transition">
-                 City rides
+                  City rides
                 </li>
                 <li className="cursor-pointer hover:text-white transition">
                   Outstation
@@ -636,13 +641,13 @@ export default function HeroSection() {
               </h5>
               <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
                 <li className="cursor-pointer hover:text-white transition">
-                 Ahmedabad, India
+                  Ahmedabad, India
                 </li>
                 <li className="cursor-pointer hover:text-white transition">
                   +91 12345 67890
                 </li>
                 <li className="cursor-pointer hover:text-white transition">
-                onlymeterindia@gmail.com
+                  onlymeterindia@gmail.com
                 </li>
               </ul>
             </div>
