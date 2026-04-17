@@ -611,26 +611,20 @@ export default function HeroSection() {
             {/* Resources */}
             <div>
               <h5 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
-                Resources
+                Services
               </h5>
               <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
                 <li className="cursor-pointer hover:text-white transition">
-                  Academy
+                 City rides
                 </li>
                 <li className="cursor-pointer hover:text-white transition">
-                  Blog
+                  Outstation
                 </li>
                 <li className="cursor-pointer hover:text-white transition">
-                  Themes
+                  Rental
                 </li>
                 <li className="cursor-pointer hover:text-white transition">
-                  Hosting
-                </li>
-                <li className="cursor-pointer hover:text-white transition">
-                  Developers
-                </li>
-                <li className="cursor-pointer hover:text-white transition">
-                  Support
+                  Airport Pickup
                 </li>
               </ul>
             </div>
@@ -642,19 +636,13 @@ export default function HeroSection() {
               </h5>
               <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
                 <li className="cursor-pointer hover:text-white transition">
-                  About Us
+                 Ahmedabad, India
                 </li>
                 <li className="cursor-pointer hover:text-white transition">
-                  Careers
+                  +91 12345 67890
                 </li>
                 <li className="cursor-pointer hover:text-white transition">
-                  FAQs
-                </li>
-                <li className="cursor-pointer hover:text-white transition">
-                  Teams
-                </li>
-                <li className="cursor-pointer hover:text-white transition">
-                  Contact Us
+                onlymeterindia@gmail.com
                 </li>
               </ul>
             </div>
