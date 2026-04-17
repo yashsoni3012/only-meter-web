@@ -18,6 +18,7 @@ import Slide2 from "../assets/Slider1.png";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const tickerItems = [
   { text: "BOOK ONLINE NOW", dark: false },
@@ -168,13 +169,11 @@ export default function HeroSection() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
           {/* Yellow strip */}
           <div
-            className="absolute w-[260%] sm:w-[220%] md:w-[200%] 
-               h-[40px] sm:h-[50px] md:h-[60px] 
-               bg-[#FDD20B] flex items-center overflow-hidden"
+            className="absolute w-[120%] h-[40px] sm:h-[50px] md:h-[60px] bg-[#FDD20B] flex items-center overflow-hidden"
             style={{
               transform: "rotate(6deg)",
               top: "45%",
-              left: "-80%",
+              left: "-10%", // centered to cover full width even when rotated
             }}
           >
             <div className="flex whitespace-nowrap animate-ticker">
@@ -194,13 +193,11 @@ export default function HeroSection() {
 
           {/* Black strip */}
           <div
-            className="absolute w-[260%] sm:w-[220%] md:w-[200%] 
-               h-[40px] sm:h-[50px] md:h-[60px] 
-               bg-black flex items-center overflow-hidden"
+            className="absolute w-[120%] h-[40px] sm:h-[50px] md:h-[60px] bg-black flex items-center overflow-hidden"
             style={{
               transform: "rotate(-8deg)",
               top: "55%",
-              left: "-80%",
+              left: "-10%",
             }}
           >
             <div className="flex whitespace-nowrap animate-ticker-reverse">
@@ -640,7 +637,6 @@ export default function HeroSection() {
                 <li className="cursor-pointer hover:text-white transition">
                   About Us
                 </li>
-
                 <li className="cursor-pointer hover:text-white transition">
                   Rider
                 </li>
@@ -650,7 +646,7 @@ export default function HeroSection() {
               </ul>
             </div>
 
-            {/* Resources */}
+            {/* Services */}
             <div>
               <h5 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
                 Services
@@ -671,7 +667,7 @@ export default function HeroSection() {
               </ul>
             </div>
 
-            {/* Contact */}
+            {/* Contact + Social Links (in one row) */}
             <div>
               <h5 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
                 Contact
@@ -686,24 +682,26 @@ export default function HeroSection() {
                 <li className="cursor-pointer hover:text-white transition">
                   onlymeterindia@gmail.com
                 </li>
+                {/* Social links as a flex row */}
+
+                <li className="flex gap-4 mt-6">
+  <span className="cursor-pointer hover:text-white transition text-gray-400 hover:text-white">
+    <FaFacebookF size={18} />
+  </span>
+  <span className="cursor-pointer hover:text-white transition text-gray-400 hover:text-white">
+    <FaInstagram size={18} />
+  </span>
+  <span className="cursor-pointer hover:text-white transition text-gray-400 hover:text-white">
+    <FaYoutube size={18} />
+  </span>
+</li>
               </ul>
             </div>
           </div>
 
-          {/* Bottom row */}
-          <div className="mt-10 sm:mt-14 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-gray-500 gap-3 sm:gap-4">
+          {/* Bottom row – only copyright */}
+          <div className="mt-10 sm:mt-14 flex justify-center sm:justify-start text-xs sm:text-sm text-gray-500">
             <p>© 2026 Only Meter. All rights reserved.</p>
-            <div className="flex gap-4 sm:gap-6">
-              <span className="cursor-pointer hover:text-white transition">
-                Twitter
-              </span>
-              <span className="cursor-pointer hover:text-white transition">
-                YouTube
-              </span>
-              <span className="cursor-pointer hover:text-white transition">
-                LinkedIn
-              </span>
-            </div>
           </div>
         </div>
       </footer>
