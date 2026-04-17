@@ -103,7 +103,7 @@ export default function HeroSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -284,48 +284,87 @@ export default function HeroSection() {
       {/* ─────────────────────────────────────
           IMAGE SLIDER
       ───────────────────────────────────── */}
-      <section id="about" className="w-full relative overflow-hidden">
-        <div className="relative w-full h-[220px] sm:h-[320px] md:h-[430px] lg:h-[560px] bg-black">
+      <section
+        id="about"
+        className="w-full relative overflow-hidden mt-10 lg:mt-20"
+      >
+        {/* SLIDER CONTAINER */}
+        <div
+          className="
+       relative w-full
+ 
+    aspect-[5/2]        /* ✅ MOBILE (no cut) */
+    sm:aspect-[16/9]    /* tablet */
+    md:aspect-[18/6]    /* desktop */
+    lg:aspect-[24/9]
+ 
+    "
+        >
           {slides.map((img, index) => (
             <img
-              key={index}
               src={img}
               alt="slide"
-              className={`absolute top-0 left-0 w-full h-full object-contain sm:object-cover transition-opacity duration-700 ease-in-out ${
-                index === current ? "opacity-100 z-10" : "opacity-0 z-0"
-              }`}
+              className={`
+    absolute top-0 left-0 w-full h-full
+ 
+    object-contain md:object-cover   /* ✅ FIX */
+ 
+    transition-opacity duration-700
+    ${index === current ? "opacity-100 z-10" : "opacity-0 z-0"}
+  `}
             />
           ))}
         </div>
 
-        {/* Prev button */}
+        {/* LEFT BUTTON */}
         <button
           onClick={prevSlide}
-          className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-4 bg-black/50 text-white w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full z-20 text-lg sm:text-xl hover:bg-black/70 transition"
+          className="
+      absolute top-1/2 -translate-y-1/2
+      left-2
+      bg-black/40 text-white
+      w-7 h-7 sm:w-9 sm:h-9
+      flex items-center justify-center
+      rounded-full z-20
+    "
         >
           ‹
         </button>
 
-        {/* Next button */}
+        {/* RIGHT BUTTON */}
         <button
           onClick={nextSlide}
-          className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-4 bg-black/50 text-white w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full z-20 text-lg sm:text-xl hover:bg-black/70 transition"
+          className="
+      absolute top-1/2 -translate-y-1/2
+      right-2
+      bg-black/40 text-white
+      w-7 h-7 sm:w-9 sm:h-9
+      flex items-center justify-center
+      rounded-full z-20
+    "
         >
           ›
         </button>
 
-        {/* Dots */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {/* DOTS */}
+        {/* <div
+          className="
+    absolute bottom-2
+    left-1/2 -translate-x-1/2
+    flex gap-2 z-20
+  "
+        >
           {slides.map((_, i) => (
             <div
               key={i}
               onClick={() => setCurrent(i)}
-              className={`rounded-full cursor-pointer transition-all ${
-                current === i ? "bg-white w-5 h-2" : "bg-gray-400 w-2 h-2"
-              }`}
+              className={`
+          rounded-full cursor-pointer transition-all
+          ${current === i ? "bg-white w-4 h-2" : "bg-gray-400 w-2 h-2"}
+        `}
             />
           ))}
-        </div>
+        </div> */}
       </section>
 
       {/* ─────────────────────────────────────
