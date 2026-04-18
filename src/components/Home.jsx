@@ -299,6 +299,7 @@ export default function HeroSection() {
         >
           {slides.map((img, index) => (
             <img
+             key={index} 
               src={img}
               alt="slide"
               className={`
